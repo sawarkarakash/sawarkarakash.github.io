@@ -48,7 +48,7 @@ The most trivial example of an algebra is the power set $\mathcal{P}(X)$ of $X$.
 
 **Definition 3.** A $\sigma$-ring $\mathcal{S}$ on a set $X$ is a ring of subsets of $X$ that is closed under countable unions as well.
 
-If ${A_n}_{n=1}^{\infty}$ is a countable sequence of sets in $\mathcal{S}$, then $\bigcup_{n=1}^{\infty} A_n \in \mathcal{S}$.
+If $$ {A_n}_{n=1}^{\infty} $$ is a countable sequence of sets in $$ \mathcal{S} $$, then $$ \bigcup_{n=1}^{\infty} A_n \in \mathcal{S} $$.
 
 Similarly, $\sigma$-algebra is closed under countable unions.
 
