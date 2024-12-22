@@ -80,6 +80,18 @@ $\mu(A) \leq \mu(B)$
 **Properties 2.** Countable Subadditivity: For any sequence of sets $$ {E_n}_{n=1}^{\infty} $$ in $R$ where $$ \bigcup_{n=1}^{\infty} E_n \in R $$ :
 $$ \mu(\bigcup_{n=1}^{\infty} E_n) \leq \sum_{n=1}^{\infty} \mu(E_n) $$
 
+
+**Properties 3.** Continuity from Below (for increasing sequences):
+If $${E_n}{n=1}^{\infty}$$ is an increasing sequence of sets in R (meaning $$E_1 \subseteq E_2 \subseteq E_3 \subseteq \cdots$$) and $$\bigcup{n=1}^{\infty} E_n \in R$$, then:
+$\mu(\bigcup_{n=1}^{\infty} E_n) = \lim_{n \to \infty} \mu(E_n)$
+
+**Properties 4.** Continuity from Above (for decreasing sequences):
+If $${E_n}{n=1}^{\infty}$$ is a decreasing sequence of sets in R (meaning $$E_1 \supseteq E_2 \supseteq E_3 \supseteq \cdots$$) and $$\mu(E_1) < \infty$$, and $$\bigcap{n=1}^{\infty} E_n \in R$$, then:
+$$\mu(\bigcap_{n=1}^{\infty} E_n) = \lim_{n \to \infty} \mu(E_n)$$
+
+These properties are crucial because they ensure that measures behave well with respect to limits of sets. The continuity from above property requires the additional condition that $$\mu(E_1) < \infty$$. No such condition is needed for continuity from below since measures are non-negative.
+
+
 # Probability as a Measure
 
 Probability is defined as a measure on a sigma alebra of sample space. When we conduct a random experiment, we begin with the sample space $\Omega$ (omega), which contains all possible outcomes of the experiment. A sigma algebra $\mathcal{F}$ contains events which are subsets of the sample space. A event is said to occur when the observation (outcome) of the random experiment belongs to the event. 
