@@ -71,14 +71,14 @@ Rings form the mathematical foundation for what we can measure, with sigma algeb
 
 * $\mu(E) \geq 0$ for all $E \in R$
 * $\mu(\emptyset) = 0$
-* $$\mu$ is countably additive. If ${E_n}_{n=1}^{\infty}$ is a sequence of disjoint sets in $R$ such that $\bigcup_{n=1}^{\infty} E_n \in R$$, then:
+* $\mu$ is countably additive. If $$ {E_n}_{n=1}^{\infty} $$ is a sequence of disjoint sets in $R$ such that $$ \bigcup_{n=1}^{\infty} E_n \in R $$, then:
   $\mu(\bigcup_{n=1}^{\infty} E_n) = \sum_{n=1}^{\infty} \mu(E_n)$
 
 **Properties 1.** Monotonicity: For any sets $A, B \in R$, if $A \subseteq B$, then:
 $\mu(A) \leq \mu(B)$
 
-**Properties 2.** Countable Subadditivity: For any sequence of sets $${E_n}_{n=1}^{\infty}$$ in $R$ where $$\bigcup_{n=1}^{\infty} E_n \in R$$:
-$$\mu(\bigcup_{n=1}^{\infty} E_n) \leq \sum_{n=1}^{\infty} \mu(E_n)$$
+**Properties 2.** Countable Subadditivity: For any sequence of sets $$ {E_n}_{n=1}^{\infty} $$ in $R$ where $$ \bigcup_{n=1}^{\infty} E_n \in R $$ :
+$$ \mu(\bigcup_{n=1}^{\infty} E_n) \leq \sum_{n=1}^{\infty} \mu(E_n) $$
 
 # Probability as a Measure
 
