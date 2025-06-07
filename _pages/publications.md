@@ -18,7 +18,7 @@ author_profile: false
 
 {% assign published_pubs = site.publications | sort: "date" | reverse %}
 {% assign selected_pubs = published_pubs | where: "selected", true %}
-{% assign accepted_pubs = site.publications | where: "accepted", true | sort: "date" | reverse %
+{% assign accepted_pubs = site.publications | where: "accepted", true | sort: "date" | reverse %}
 
 {% if selected_pubs.size > 0 %}
 <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 25px; margin: 30px 0; color: white;">
