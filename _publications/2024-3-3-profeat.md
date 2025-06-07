@@ -16,7 +16,7 @@ representations using SHAP (SHapley Additive exPlanations.'
 date: 2024-3-29
 venue: 'Nature Scientific Reports'
 paperurl: https://www.nature.com/articles/s41598-024-58450-8
-IF : 4.6 
+Quartile : Q1 
 code: https://github.com/HardikPrabhu/Protein-Feature-Engineering-Framework-for-AMPylation-Site-Prediction
 paper: 
 published: yes
