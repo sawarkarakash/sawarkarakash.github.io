@@ -152,7 +152,7 @@ $$
 
 It provides a control to balance between the quality of data reconstruction and the structure of the latent representation. A low $\beta$ focuses on better reconstruction, whereas a high $ \beta$ emphasizes a better-structured latent space (closeness to the choice of prior).    
 
-The choice of $\beta$ has profound implications for representation learning. Since the prior is typically a standard Gaussian, increasing $\beta$ forces the encoder distribution $q_\phi(z|x)$ to more closely approximate this standard Gaussian. When we prioritise the KL-divergence term with a high $\beta$ value, the encoder learns to produce more disentangled representations. This means $q_\phi(z|x)$ approaches a standard Gaussian where each latent dimension becomes approximately independent of the others, leading to disentangled factors of variation in the learned representation. However, this comes with a trade-off: higher $\beta$ values can lead to poor reconstruction.
+The choice of $\beta$ has profound implications for representation learning. Since the prior is typically a standard Gaussian, increasing $\beta$ forces the encoder distribution $q_\phi(z \vert x)$ to more closely approximate this standard Gaussian. When we prioritise the KL-divergence term with a high $\beta$ value, the encoder learns to produce more disentangled representations. This means $q_\phi(z \vert x)$ approaches a standard Gaussian where each latent dimension becomes approximately independent of the others, leading to disentangled factors of variation in the learned representation. However, this comes with a trade-off: higher $\beta$ values can lead to poor reconstruction.
 
 ## The Challenge of Gradient Estimation with Expectations
 
@@ -234,7 +234,7 @@ where $\epsilon \sim \mathcal{N}(0,1)$. This allows us to:
 
 ### Application in VAEs
 
-In VAEs, we have an encoder that produces parameters of a distribution $q_\phi(z|x)$, and we need to compute:
+In VAEs, we have an encoder that produces parameters of a distribution $q_\phi(z \vert x)$, and we need to compute:
 
 $$\nabla_\phi \mathbb{E}_{z \sim q_\phi(z|x)}[\log p_\theta(x|z) - \log q_\phi(z|x) + \log p(z)]$$
 
