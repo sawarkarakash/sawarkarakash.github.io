@@ -1,6 +1,6 @@
 ---
 title: 'Variational Autoencoders'
-date: Sept 11, 2023
+date: JUNE 08, 2025
 author: Hardik Prabhu
 image: "/images/blogs_img/vae/image.png"
 
@@ -153,6 +153,104 @@ $$
 It provides a control to balance between the quality of data reconstruction and the structure of the latent representation. A low $\beta$ focuses on better reconstruction, whereas a high $ \beta$ emphasizes a better-structured latent space (closeness to the choice of prior).    
 
 The choice of $\beta$ has profound implications for representation learning. Since the prior is typically a standard Gaussian, increasing $\beta$ forces the encoder distribution $q_\phi(z|x)$ to more closely approximate this standard Gaussian. When we prioritise the KL-divergence term with a high $\beta$ value, the encoder learns to produce more disentangled representations. This means $q_\phi(z|x)$ approaches a standard Gaussian where each latent dimension becomes approximately independent of the others, leading to disentangled factors of variation in the learned representation. However, this comes with a trade-off: higher $\beta$ values can lead to poor reconstruction.
+
+## The Challenge of Gradient Estimation with Expectations
+
+In many situations while performing gradient descent, we often come across taking a gradient over a loss which constitutes an expectation term. Since most of the time the integral calculation is not tractable, we resort to sampling as an approximation. 
+
+Recalling Leibniz rule from multivariate calculus, if $F(\theta)$ is defined by the integral:
+
+$$F(\theta) = \int_{a(\theta)}^{b(\theta)} f(x,\theta) dx$$
+
+Then the derivative of $F$ with respect to $\theta$ is given by:
+
+$$\frac{d}{d\theta}F(\theta) = \int_{a(\theta)}^{b(\theta)} \frac{\partial}{\partial\theta} f(x,\theta) dx + f(b(\theta),\theta) \cdot b'(\theta) - f(a(\theta),\theta) \cdot a'(\theta)$$
+
+For our purpose, let $F$ be $\mathbb{E}_{x \sim p_\theta}[f(x,\phi)]$:
+
+$$F(\theta,\phi) = \int f(x,\phi) p_\theta(x) dx$$
+
+Then calculating $\nabla_\phi F$ (gradient w.r.t $\phi$) is straightforward:
+
+$$\frac{\partial F}{\partial \phi} = \int \frac{\partial f}{\partial \phi} p_\theta(x) dx$$
+
+$$\frac{\partial F}{\partial \phi} = \mathbb{E}_{x \sim p_\theta}\left[\frac{\partial f}{\partial \phi}\right]$$
+
+This can be approximated by sampling. The more challenging situation is calculating $\nabla_\theta F$:
+
+$$\frac{\partial F}{\partial \theta} = \int \frac{\partial p_\theta(x)}{\partial \theta} f(x,\phi) dx$$
+
+Notice that this time the gradient is not inside an expectation with respect to the distribution $p_\theta$, so the integral cannot be approximated by sampling from $p$.
+
+There are many tricks in the literature to overcome this challenge [3], and reparameterization is one of the key techniques applied in VAE loss calculations. The emphasis of various tricks is upon the convergence of estimates and ease of calculation.
+
+One simple trick is to replace the gradient of density with the log of density times the density:
+
+$$\nabla_\theta p_\theta(x) = p_\theta(x) \nabla_\theta \log p_\theta(x)$$
+
+Hence the gradient $\nabla_\theta F$ can be rewritten as:
+
+$$\nabla_\theta F(\theta,\phi) = \mathbb{E}_{x \sim p_\theta}[\nabla_\theta \log p_\theta(x) \cdot f(x,\phi)]$$
+
+This is known as the **REINFORCE estimator** or **score function estimator**, but it often has high variance in practice.
+
+## The Reparameterization Trick
+
+The reparameterization trick provides an elegant solution to the gradient estimation problem by transforming the sampling process. Instead of sampling directly from $p_\theta(x)$, we express $x$ as a deterministic function of $\theta$ and a noise variable $\epsilon$.
+
+### The Core Idea
+
+The key insight is to reparameterize $x$ as:
+
+$$x = g_\theta(\epsilon)$$
+
+where $\epsilon \sim p(\epsilon)$ is sampled from a simple distribution (like standard normal), and $g_\theta$ is a deterministic function parameterized by $\theta$.
+
+
+If we can write $x = g_\theta(\epsilon)$ where $\epsilon \sim p(\epsilon)$, then:
+
+$$\mathbb{E}_{x \sim p_\theta}[f(x,\phi)] = \mathbb{E}_{\epsilon \sim p(\epsilon)}[f(g_\theta(\epsilon), \phi)]$$
+
+Now we can compute the gradient:
+
+$$\nabla_\theta \mathbb{E}_{x \sim p_\theta}[f(x,\phi)] = \nabla_\theta \mathbb{E}_{\epsilon \sim p(\epsilon)}[f(g_\theta(\epsilon), \phi)]$$
+
+$$= \mathbb{E}_{\epsilon \sim p(\epsilon)}[\nabla_\theta f(g_\theta(\epsilon), \phi)]$$
+
+$$= \mathbb{E}_{\epsilon \sim p(\epsilon)}\left[\frac{\partial f}{\partial x} \frac{\partial g_\theta(\epsilon)}{\partial \theta}\right]$$
+
+This gradient can now be estimated by sampling $\epsilon$ from the simple distribution $p(\epsilon)$.
+
+### Example: Gaussian Distribution
+
+For a Gaussian distribution $\mathcal{N}(\mu, \sigma^2)$, we can reparameterize as:
+
+$$x = \mu + \sigma \cdot \epsilon$$
+
+where $\epsilon \sim \mathcal{N}(0,1)$. This allows us to:
+1. Sample $\epsilon$ from standard normal
+2. Transform it deterministically to get $x$
+3. Compute gradients with respect to $\mu$ and $\sigma$ through the deterministic transformation
+
+### Application in VAEs
+
+In VAEs, we have an encoder that produces parameters of a distribution $q_\phi(z|x)$, and we need to compute:
+
+$$\nabla_\phi \mathbb{E}_{z \sim q_\phi(z|x)}[\log p_\theta(x|z) - \log q_\phi(z|x) + \log p(z)]$$
+
+Using the reparameterization trick:
+1. The encoder outputs $\mu(x)$ and $\sigma(x)$
+2. We sample $\epsilon \sim \mathcal{N}(0,I)$
+3. We compute $z = \mu(x) + \sigma(x) \odot \epsilon$
+4. We can now backpropagate through this deterministic computation
+
+
+The reparameterization trick requires that we can express the distribution as a deterministic transformation of a simple noise source. This works well for:
+- Gaussian distributions
+- Uniform distributions
+- Some exponential family distributions
+
+But may not be directly applicable to discrete distributions or more complex continuous distributions.
 
 
 ## References
