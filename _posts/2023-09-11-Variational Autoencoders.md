@@ -11,8 +11,7 @@ tags:
   - Representation Learning
 ---
 
-### Note: This blog is not yet complete, and will be updated frequently. 
-
+Variational Autoencoders (VAEs) represent a fundamental breakthrough in generative modeling, combining the power of deep neural networks with principled Bayesian inference. Introduced by Kingma and Welling (2013) [1], VAEs provide a scalable framework for learning complex probabilistic models with continuous latent variables.
 
 ## The Latent Variable Model
 
@@ -22,21 +21,21 @@ The following generative process is assumed, first sample $z \sim p_\theta(z)$. 
 ![Figure 1 : Directed Graphical Model of VAE](/images/blogs_img/vae/image.png)
 
 
-The joint distribution for the generative model is given by the Bayes rule.
+The Bayes' rule gives the joint distribution for the generative model.
 
-$$p_\theta(x,y) = p_\theta(z)p_\theta(x|z)$$
+$$p_\theta(x,z) = p_\theta(z)p_\theta(x|z)$$
 
 
 
 ## Likelihood optimization
 
 In order to optimize the parameters of our generative model, we 
-assume that the training set consists of i.i.d observations coming from $p_{data}$. We would then maximize the likelihood of our model.
-If the marginal $p_\theta(x)$ was tractable then we are done. Unfortunately, this is most of the time not possible.
+assume that the training set consists of i.i.d. observations coming from $p_{data}$. We would then maximise the (log) likelihood of our model.
+If the marginal $p_\theta(x)$ were tractable, then we would be done. Unfortunately, this is most of the time not possible.
 
 $$\theta = \arg \max_{\theta} \sum_{i} \log p_\theta(x_i)$$
 
-Let's just concentrate on the expression $log p_\theta (x)$ (i.e., the likelihood of a single example). It simplifies into the following: 
+Let's concentrate on the expression $log p_\theta (x)$ (i.e., the likelihood of a single example). It simplifies into the following: 
 
 $$\log p_\theta(x) = \log \int p_\theta(x,z) dz$$
 
@@ -115,7 +114,7 @@ We can observe that this term is exactly the same as the lower bound for likelih
 $$  \ell(\theta,q) = E_{z \sim q(z)} \left[\log \frac {p_\theta(x)p_\theta(z|x) }{q(z)} \right]$$
 
 
-## Amortized Inference 
+## Amortised Inference 
 
 
 When maximizing the ELBO w.r.t $\theta$ and $q$, 
@@ -145,7 +144,7 @@ Since we are trying to maximize the objective, The terms within the bracket need
 
 Both terms are important for the objective. To see why, imagine you're generating a new data point $x$ with a trained VAE. First, you sample $z$ from $p(z)$, and then you generate $x$ based on $p(x \vert z)$. What's crucial to recognize is that we're effectively sampling $(x, z)$ from $p_\theta(x, z)$, rather than directly generating $x$ from $p_\theta(x)$. This makes sense because if you think of a manifold in $x$ space that houses all the true data points, $q(z \vert x)$ establishes a kind of mapping. The regularization term in our objective ensures that $q(z \vert x)$ stays close to $p(z)$, letting us select a $z$ that can be decoded to a meaningful $x$.  Reconstruction loss is important as well. Otherwise, our encoder-decoder scheme would simply fail.
 
-In Beta-VAE, the loss function is modified as follows:
+In Beta-VAE [2], the loss function is modified as follows:
 
 $$
 -  \ell_{\beta}(\theta, \phi, x) = -E_{z \sim q_\phi(z|x)} [\log p_\theta(x|z)] + \beta \times D_{\text{KL}}(q_\phi(z|x) || p_\theta(z))
@@ -153,17 +152,13 @@ $$
 
 It provides a control to balance between the quality of data reconstruction and the structure of the latent representation. A low $\beta$ focuses on better reconstruction, whereas a high $ \beta$ emphasizes a better-structured latent space (closeness to the choice of prior).    
 
-
-## Role of the Prior
-
+The choice of $\beta$ has profound implications for representation learning. Since the prior is typically a standard Gaussian, increasing $\beta$ forces the encoder distribution $q_\phi(z|x)$ to more closely approximate this standard Gaussian. When we prioritise the KL-divergence term with a high $\beta$ value, the encoder learns to produce more disentangled representations. This means $q_\phi(z|x)$ approaches a standard Gaussian where each latent dimension becomes approximately independent of the others, leading to disentangled factors of variation in the learned representation. However, this comes with a trade-off: higher $\beta$ values can lead to poor reconstruction.
 
 
+## References
 
-## Conditional VAE
+[1] Kingma, D. P., & Welling, M. (2013). Auto-Encoding Variational Bayes. *arXiv preprint arXiv:1312.6114*.
 
+[2] Burgess, C.P., Higgins, I., Pal, A., Matthey, L., Watters, N., Desjardins, G. and Lerchner, A., 2018. Understanding disentangling in $\beta $-VAE. arXiv preprint arXiv:1804.03599.
 
-
-## Reparametrization trick 
-
-
-## VQ-VAE
+[3] Walder, C.J., Roussel, P., Nock, R., Ong, C.S. and Sugiyama, M., 2019. New tricks for estimating gradients of expectations. arXiv preprint arXiv:1901.11311.
