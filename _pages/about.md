@@ -10,32 +10,56 @@ redirect_from:
 ---
 
 
+## 👋 About Me
 
-I am currently an ML Researcher at [Cloudaeye](https://www.cloudaeye.com/), a startup based in Fremont, California, where I rejoined in July 2024.
+I’m a Ph.D. scholar at the **Centre for the Study of Regional Development (CSRD), Jawaharlal Nehru University**, New Delhi. My research focuses on **poverty, inequality**, and the application of **advanced statistical techniques** like **Small Area Estimation (SAE)** to generate granular, actionable insights for public policy in India.
 
-Prior to my current role, I served as a Research Associate at the [Robert Bosch Centre for Cyber-Physical Systems, Indian Institute of Science](https://cps.iisc.ac.in/) from November 2023 to June 2024. During this time, I focused on applying deep generative modeling in Energy Informatics and led a project on using GANs for energy anomaly detection. My work resulted in a paper presented at the AI4TS workshop at the AAAI 24 conference.
+I actively work with large-scale national datasets such as the **Periodic Labour Force Survey (PLFS)**, **Household Consumption Expenditure Survey (HCES)**, and **National Family Health Survey (NFHS)**. I aim to bridge economics, data science, and public policy through reproducible research using **R**.
 
-Before that, I was a Research Associate at [FLAME University's](https://www.flame.edu.in/) Centre for Mathematical Modelling from January to November 2023. There, I led projects on Explainable AI and Genetic Algorithms, and also served as a Teaching Assistant for various courses.
+I hold a **Master’s in Economics** from the **Mumbai School of Economics and Public Policy**, and a **Bachelor’s in Economics** from **D.G. Ruparel College**, University of Mumbai.
 
-My first role at [Cloudaeye](https://www.cloudaeye.com/) was as an ML Engineer from July 2021 to October 2022, where I developed and deployed advanced deep learning solutions for anomaly detection in cloud-native applications.
+Previously, I worked as a **Consultant** with the **Tribal Development Department, Government of Maharashtra**, contributing to the policy evaluation of educational initiatives like **Ashram Schools**.
 
-I hold an M.Sc. in Data Science from [Chennai Mathematical Institute](https://www.cmi.ac.in/) (2019-2021) and a B.Sc. in Mathematics from D.G Ruparel College, Mumbai University (2016-2019).
+---
 
+## 📚 Publications & Writing
 
+I’ve co-authored **books in Marathi** with **Prof. Neeraj Hatekar** on **unemployment in Maharashtra**, using data from the **PLFS**. These books aim to translate complex labour market statistics into accessible language for broader regional audiences, contributing to informed discussions on employment policy.
 
-### 🙌🔬 Collaborations & Projects
+I'm also writing a **hands-on guidebook** on how to use Indian secondary datasets (PLFS, HCES, Time Use Survey) in **R**. It covers everything from data extraction and variable creation to weighting and estimation techniques tailored for applied economic research.
 
-I've had the opportunity to collaborate on several impactful projects:
+---
 
-- Worked with [Dr. Pandarasamy Arjunan](https://www.samy101.com/) on applying machine learning to optimize building energy management.
-- Explored explainable AI, genetic algorithms, and application of ML in Bioinfomratics with [Dr. Jayaraman Valadi](https://www.flame.edu.in/faculty/jayaraman-v-k).
-- During my internship at [CMI](https://www.cmi.ac.in/), I collaborated with [Dr. Venkatesh Vinayakarao](http://vvtesh.co.in/) on implementing topic modeling to align functionality scripts with software documentation.
+## 🔬 Research & Projects
 
+- **District-level poverty estimation** using Small Area Estimation (SAE) by integrating PLFS, HCES, and NFHS datasets
+- Leading a **UGC-funded minor research project** evaluating residential hostels under the Social Justice Department, Maharashtra
+- Building **R-based analytical templates** for researchers working with public microdata in India
+- State-level collaborations on **education and tribal development policy** evaluation
 
-### 😊 Reserch Interests
+---
 
-My research interests focus on deep learning and generative modeling, with an emphasis on its applications, such as anomaly detection, among others. I have authored several publications, including refereed conference papers, journal articles, and a book chapter, covering topics such as GANs, anomaly detection, explainable AI, and applications of machine learning in various domains.
+## 🧠 Research Interests
 
+- Poverty & Inequality Measurement  
+- Small Area Estimation (SAE)  
+- Labour & Employment Studies (PLFS)  
+- Regional Development  
+- Public Policy Evaluation  
+- Reproducible Research using R  
+
+---
+
+## 📂 Featured GitHub Repositories
+
+- 📦 [district-poverty-sae](https://github.com/akashsawarkar/district-poverty-sae): SAE-based district-level poverty estimation  
+- 📊 [plfs-r-template](https://github.com/akashsawarkar/plfs-r-template): Clean and analyze PLFS microdata in R  
+- 📘 [secondary-data-handbook](https://github.com/akashsawarkar/secondary-data-handbook): Guidebook for working with Indian public datasets  
+- 🏫 [ugc-minor-hostel-eval](https://github.com/akashsawarkar/ugc-minor-hostel-eval): Evaluation of residential hostels using survey methods
+
+> *Links are placeholders — replace them with actual GitHub repository URLs or let me know if you want auto-generated templates.*
+
+---
 
 ## 📰 Latest News and Highlights
 
