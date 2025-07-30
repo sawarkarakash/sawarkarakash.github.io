@@ -7,11 +7,11 @@
 
 # Site Settings
 locale                   : "en-IN"
-title                    : "Hardik's Homepage"
+title                    : "Akash's Homepage"
 title_separator          : "-"
-name                     : &name "Hardik Prabhu"
+name                     : &name "Akash Sawarkar"
 description              : &description "personal description"
-url                      : https://hardikprabhu.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://sawarkarakash.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "HardikPrabhu/hardikprabhu.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -80,15 +80,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Hardik Prabhu"
+  name             : "Akash Sawarkar"
   avatar           : "dp_option_1.jpg"
-  bio              : "Machine Learning Researcher"
-  location         : "Mumbai, India"
-  employer         : "Cloudaeye"
+  bio              : "RResearch Scholar at JNU"
+  location         : "Delhi, India"
+  employer         : 
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=UVGQmZMAAAAJ&hl=en"
-  email            : "hardik.prabhu@gmail.com"
-  researchgate     :  "https://www.researchgate.net/profile/Hardik_Prabhu"
+  email            : "asawarkar1213@gmail.com"
+  researchgate     :  
   uri              :
   bitbucket        :
   codepen          :
@@ -96,14 +96,14 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "HardikPrabhu"
+  github           : "sawarkarakash"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      :
   lastfm           :
-  linkedin         : "hardik-prabhu"
-  orcid            : "https://orcid.org/0000-0001-5577-4511"
+  linkedin         : "akashsawarka"
+  orcid            : "https://orcid.org/my-orcid?orcid=0009-0004-3795-8148"
   pinterest        :
   soundcloud       :
   stackoverflow    :
