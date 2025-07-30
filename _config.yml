@@ -81,12 +81,12 @@ analytics:
 # Site Author
 author:
   name             : "Akash Sawarkar"
-  avatar           : "dp_option_1.jpg"
+  avatar           : "nk1.jpg"
   bio              : "Research Scholar at JNU"
   location         : "Delhi, India"
   employer         : 
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=UVGQmZMAAAAJ&hl=en"
+  googlescholar    : 
   email            : "asawarkar1213@gmail.com"
   researchgate     :  
   uri              :
@@ -102,7 +102,7 @@ author:
   instagram        :
   impactstory      :
   lastfm           :
-  linkedin         : "akashsawarka"
+  linkedin         : "akashsawarkar"
   orcid            : "https://orcid.org/my-orcid?orcid=0009-0004-3795-8148"
   pinterest        :
   soundcloud       :
